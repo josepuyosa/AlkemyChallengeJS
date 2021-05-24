@@ -1,6 +1,6 @@
 import React from "react";
 import NewBudget from "../budgets/NewBudget";
-import BudgetList from "../budgets/List";
+import BudgetList from "../budgets/BudgetList";
 const Sidebar = () => {
   return (
     <aside>
