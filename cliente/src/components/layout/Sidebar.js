@@ -1,5 +1,6 @@
 import React from "react";
 import NewBudget from "../budgets/NewBudget";
+import BudgetList from "../budgets/List";
 const Sidebar = () => {
   return (
     <aside>
@@ -8,6 +9,7 @@ const Sidebar = () => {
 
       <div className="proyectos">
         <h2>Your Budgets</h2>
+        <BudgetList />
       </div>
     </aside>
   );
