@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./components/auth/Login";
 import NewAcount from "./components/auth/NewAcount";
-import Projects from "./components/projects/Projects";
+import Budgets from "./components/budgets/Budgets";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/new-acount" component={NewAcount} />
-        <Route exact path="/projects" component={Projects} />
+        <Route exact path="/budgets" component={Budgets} />
       </Switch>
     </Router>
   );

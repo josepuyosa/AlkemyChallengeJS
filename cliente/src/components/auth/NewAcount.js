@@ -20,9 +20,6 @@ const NewAcount = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //validation empty field
-
-    //action
   };
 
   return (
