@@ -7,19 +7,21 @@ import {
   GET_BUDGETS,
   ADD_BUDGET,
   VALIDATE_FORM,
+  CURRENT_BUDGET,
+  DELETE_BUDGET,
 } from "../../types/index";
-
+const budgets = [
+  { id: 1, name: "Comida", amount: 1000 },
+  { id: 2, name: "alquiler", amount: 300 },
+  { id: 3, name: "servicios", amount: 562 },
+  { id: 4, name: "otros", amount: 7852 },
+];
 const BudgetState = (props) => {
-  const budgets = [
-    { id: 1, name: "Comida", amount: 1000 },
-    { id: 2, name: "alquiler", amount: 300 },
-    { id: 3, name: "servicios", amount: 562 },
-    { id: 4, name: "otros", amount: 7852 },
-  ];
   const initialState = {
     budgets: [],
     hideForm: false,
     errorForm: false,
+    budget: null,
   };
 
   const [state, dispatch] = useReducer(budgetReducer, initialState);
@@ -49,16 +51,34 @@ const BudgetState = (props) => {
       type: VALIDATE_FORM,
     });
   };
+
+  const currentBudgetFn = (budgetId) => {
+    dispatch({
+      type: CURRENT_BUDGET,
+      payload: budgetId,
+    });
+  };
+
+  const deleteBudgetFn = (budgetId) => {
+    dispatch({
+      type: DELETE_BUDGET,
+      payload: budgetId,
+    });
+  };
+
   return (
     <budgetContext.Provider
       value={{
         budgets: state.budgets,
         hideForm: state.hideForm,
         errorForm: state.errorForm,
+        budget: state.budget,
         showFormFn,
         getBudgetsFn,
         addBugetFn,
         showErrorFn,
+        currentBudgetFn,
+        deleteBudgetFn,
       }}
     >
       {props.children}

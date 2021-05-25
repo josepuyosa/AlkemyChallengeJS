@@ -3,6 +3,8 @@ import {
   GET_BUDGETS,
   ADD_BUDGET,
   VALIDATE_FORM,
+  CURRENT_BUDGET,
+  DELETE_BUDGET,
 } from "../../types/index";
 
 export default (state, action) => {
@@ -22,11 +24,23 @@ export default (state, action) => {
         ...state,
         budgets: [...state.budgets, action.payload],
         hideForm: false,
+        errorForm: false,
       };
     case VALIDATE_FORM:
       return {
         ...state,
         errorForm: true,
+      };
+    case CURRENT_BUDGET:
+      return {
+        ...state,
+        budget: state.budgets.filter((budget) => budget.id === action.payload),
+      };
+    case DELETE_BUDGET:
+      return {
+        ...state,
+        budgets: state.budgets.filter((budget) => budget.id !== action.payload),
+        budget: null,
       };
     default:
       return state;

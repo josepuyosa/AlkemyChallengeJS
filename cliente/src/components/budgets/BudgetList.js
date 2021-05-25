@@ -9,7 +9,7 @@ const BudgetList = () => {
     getBudgetsFn();
   }, []);
 
-  if (budgets.length === 0) return null;
+  if (budgets.length === 0) return <h2>Create your budgets</h2>;
 
   return (
     <ul className="listado-proyectos">

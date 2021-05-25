@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import budgetContext from "../../context/budgets/budgetContext";
 const ExpenseForm = () => {
+  const budgetsContext = useContext(budgetContext);
+  const { budget } = budgetsContext;
+
+  if (!budget) return null;
+
+  const [currentBudgetFn] = budget;
+
   return (
     <div className="formulario">
       <form>
