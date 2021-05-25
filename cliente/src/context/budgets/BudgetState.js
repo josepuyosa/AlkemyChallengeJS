@@ -1,18 +1,26 @@
 import React, { useReducer } from "react";
 import budgetContext from "./budgetContext";
 import budgetReducer from "./budgetReducer";
+import { BUDGET_FORM } from "../../types/index";
 
 const BudgetState = (props) => {
   const initialState = {
-    form: false,
+    hideForm: false,
   };
 
   const [state, dispatch] = useReducer(budgetReducer, initialState);
 
+  const showFormFn = () => {
+    dispatch({
+      type: BUDGET_FORM,
+    });
+  };
+
   return (
     <budgetContext.Provider
       value={{
-        form: state.form,
+        hideForm: state.hideForm,
+        showFormFn,
       }}
     >
       {props.children}
