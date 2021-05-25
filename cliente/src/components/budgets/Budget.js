@@ -4,7 +4,9 @@ const Budget = ({ budget }) => {
     <li>
       <button type="button" className="btn btn-blank">
         {budget.name}
+        {budget.BudgetName}
       </button>
+      <label>${budget.amount}</label>
     </li>
   );
 };

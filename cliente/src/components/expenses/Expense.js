@@ -3,6 +3,7 @@ const Expense = ({ expense }) => {
   return (
     <li className="tarea sombra">
       <p>{expense.name}</p>
+      <p>${expense.amount}</p>
       <div className="estado">
         {expense.state ? (
           <button type="button" className="completo">

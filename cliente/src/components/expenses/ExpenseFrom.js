@@ -11,6 +11,22 @@ const ExpenseForm = () => {
           />
         </div>
         <div className="contenedor-input">
+          <select name="type" className="input-text">
+            <option value="">--Select one--</option>
+            <option value="entry">Entry</option>
+            <option value="egress">Egress</option>
+          </select>
+        </div>
+        <div className="contenedor-input">
+          <input
+            type="date"
+            className="input-text"
+            placeholder="date"
+            name="date"
+          />
+        </div>
+
+        <div className="contenedor-input">
           <input
             type="submit"
             className="btn btn-primario btn-submit btn-block"

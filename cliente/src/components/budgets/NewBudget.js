@@ -3,16 +3,15 @@ import budgetContext from "../../context/budgets/budgetContext";
 
 const NewBudget = () => {
   const budgetsContext = useContext(budgetContext);
-  const { hideForm, showFormFn } = budgetsContext;
+  const { hideForm, errorForm, showFormFn, addBugetFn, showErrorFn } =
+    budgetsContext;
 
   const [budget, setBudget] = useState({
     BudgetName: "",
     amount: "",
-    date: "",
-    type: "",
   });
 
-  const { BudgetName, amount, type, date } = budget;
+  const { BudgetName, amount } = budget;
 
   const onChangeBudget = (e) => {
     setBudget({
@@ -23,9 +22,20 @@ const NewBudget = () => {
 
   const onSubmitBudget = (e) => {
     e.preventDefault();
+
+    if (BudgetName === "" || amount === "") {
+      showErrorFn();
+      return;
+    }
+    addBugetFn(budget);
+
+    setBudget({
+      BudgetName: "",
+      amount: "",
+    });
   };
 
-  const onclickForm = () => {
+  const onclick = () => {
     showFormFn();
   };
 
@@ -34,7 +44,7 @@ const NewBudget = () => {
       <button
         type="button"
         className="btn btn-block btn-primario"
-        onClick={onclickForm}
+        onClick={onclick}
       >
         New Budget
       </button>
@@ -56,25 +66,17 @@ const NewBudget = () => {
             value={amount}
             onChange={onChangeBudget}
           />
-          <select name="type" value={type} className="input-text">
-            <option value="">--Select one--</option>
-            <option value="entry">Entry</option>
-            <option value="egress">Egress</option>
-          </select>
-          <input
-            type="date"
-            className="input-text"
-            placeholder="date"
-            name="date"
-            value={date}
-            onChange={onChangeBudget}
-          />
+
           <input
             type="submit"
             className="btn btn-primario btn-block"
             value="Create Budget"
           />
         </form>
+      ) : null}
+
+      {errorForm ? (
+        <p className="mensaje error">All fields are required</p>
       ) : null}
     </Fragment>
   );
