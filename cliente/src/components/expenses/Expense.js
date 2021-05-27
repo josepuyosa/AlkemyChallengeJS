@@ -4,14 +4,15 @@ const Expense = ({ expense }) => {
     <li className="tarea sombra">
       <p>{expense.name}</p>
       <p>${expense.amount}</p>
+      <p>{expense.date}</p>
       <div className="estado">
         {expense.state ? (
           <button type="button" className="completo">
-            Complete
+            Entry
           </button>
         ) : (
           <button type="button" className="incompleto">
-            incomplete
+            Egress
           </button>
         )}
       </div>

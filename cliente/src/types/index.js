@@ -4,3 +4,8 @@ export const ADD_BUDGET = "ADD_BUDGET";
 export const VALIDATE_FORM = "VALIDATE_FORM";
 export const CURRENT_BUDGET = "CURRENT_BUDGET";
 export const DELETE_BUDGET = "DELETE_BUDGET";
+
+export const EXPENSES_BUDGET = "EXPENSES_BUDGET";
+
+export const ADD_EXPENSE = "ADD_EXPENSE";
+export const VALIDATE_EXPENSE = "VALIDATE_EXPENSE";

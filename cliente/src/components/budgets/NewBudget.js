@@ -7,11 +7,11 @@ const NewBudget = () => {
     budgetsContext;
 
   const [budget, setBudget] = useState({
-    BudgetName: "",
+    name: "",
     amount: "",
   });
 
-  const { BudgetName, amount } = budget;
+  const { name, amount } = budget;
 
   const onChangeBudget = (e) => {
     setBudget({
@@ -23,14 +23,14 @@ const NewBudget = () => {
   const onSubmitBudget = (e) => {
     e.preventDefault();
 
-    if (BudgetName === "" || amount === "") {
+    if (name === "" || amount === "") {
       showErrorFn();
       return;
     }
     addBugetFn(budget);
 
     setBudget({
-      BudgetName: "",
+      name: "",
       amount: "",
     });
   };
@@ -54,8 +54,8 @@ const NewBudget = () => {
             type="text"
             className="input-text"
             placeholder="Budget Name"
-            name="BudgetName"
-            value={BudgetName}
+            name="name"
+            value={name}
             onChange={onChangeBudget}
           />
           <input
