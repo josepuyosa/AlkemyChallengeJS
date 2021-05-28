@@ -1,5 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import budgetContext from "../../context/budgets/budgetContext";
+import expenseContext from "../../context/expenses/expenseContext";
+
 const Expense = ({ expense }) => {
+  const budgetsContext = useContext(budgetContext);
+  const { budget } = budgetsContext;
+
+  const [currentBudgetFn] = budget;
+  //
+  const expensesContext = useContext(expenseContext);
+  const { deleteExpenseFn, getExpensesFn } = expensesContext;
+
+  const onClickDelete = (id) => {
+    deleteExpenseFn(id);
+    getExpensesFn(currentBudgetFn.id);
+  };
+
   return (
     <li className="tarea sombra">
       <p>{expense.name}</p>
@@ -20,7 +36,11 @@ const Expense = ({ expense }) => {
         <button type="button" className="btn btn-primario">
           Edit
         </button>
-        <button type="button" className="btn btn-secundario">
+        <button
+          type="button"
+          className="btn btn-secundario"
+          onClick={() => onClickDelete(expense.id)}
+        >
           Delete
         </button>
       </div>

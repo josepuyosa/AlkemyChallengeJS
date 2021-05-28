@@ -27,7 +27,9 @@ const ExpenseList = () => {
             <p>there isn't any expense</p>
           </li>
         ) : (
-          expensesBudget.map((expense) => <Expense expense={expense} />)
+          expensesBudget.map((expense) => (
+            <Expense key={expense.id} expense={expense} />
+          ))
         )}
       </ul>
       <button

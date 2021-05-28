@@ -2,6 +2,7 @@ import {
   EXPENSES_BUDGET,
   ADD_EXPENSE,
   VALIDATE_EXPENSE,
+  DELETE_EXPENSE,
 } from "../../types/index";
 
 export default (state, action) => {
@@ -23,6 +24,13 @@ export default (state, action) => {
       return {
         ...state,
         errorExpense: true,
+      };
+    case DELETE_EXPENSE:
+      return {
+        ...state,
+        expenses: state.expenses.filter(
+          (expense) => expense.id !== action.payload
+        ),
       };
     default:
       return state;

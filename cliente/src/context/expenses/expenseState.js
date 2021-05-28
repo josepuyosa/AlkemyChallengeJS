@@ -6,15 +6,16 @@ import {
   EXPENSES_BUDGET,
   ADD_EXPENSE,
   VALIDATE_EXPENSE,
+  DELETE_EXPENSE,
 } from "../../types/index";
 
 const ExpenseState = (props) => {
   const initialState = {
     expenses: [
-      { name: "carnes", amount: 0, state: true, budgetId: 1 },
-      { name: "secos", amount: 0, state: false, budgetId: 2 },
-      { name: "dulces", amount: 0, state: true, budgetId: 3 },
-      { name: "otros", amount: 0, state: false, budgetId: 4 },
+      { id: 0, name: "carnes", amount: 0, state: true, budgetId: 1 },
+      { id: 1, name: "secos", amount: 0, state: false, budgetId: 2 },
+      { id: 2, name: "dulces", amount: 0, state: true, budgetId: 3 },
+      { id: 3, name: "otros", amount: 0, state: false, budgetId: 4 },
     ],
     expensesBudget: null,
     errorExpense: false,
@@ -41,6 +42,12 @@ const ExpenseState = (props) => {
       type: VALIDATE_EXPENSE,
     });
   };
+  const deleteExpenseFn = (id) => {
+    dispatch({
+      type: DELETE_EXPENSE,
+      payload: id,
+    });
+  };
   return (
     <ExpenseContext.Provider
       value={{
@@ -50,6 +57,7 @@ const ExpenseState = (props) => {
         getExpensesFn,
         addExpenseFn,
         validateExpenseFn,
+        deleteExpenseFn,
       }}
     >
       {props.children}
