@@ -51,11 +51,14 @@ const Login = () => {
             />
           </div>
           <div className="campo-dorm">
-            <input
+            <Link to={"/budgets"} className="enlace-cuenta">
+              Sign in.
+            </Link>
+            {/* <input
               type="submit"
               className="btn btn-primario btn-block"
               value="Sign in"
-            />
+            /> */}
           </div>
         </form>
         <Link to={"/new-acount"} className="enlace-cuenta">
